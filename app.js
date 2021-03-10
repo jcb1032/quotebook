@@ -25,7 +25,7 @@ client.on("ready", () => {
 
 client.on("message", (msg) => {
 	if (msg.author.bot) return;
-	initData(msg.author.id);
+	initData(msg.author.id, msg.guild.id);
 });
 
 client.on("messageReactionAdd", (r, user) => {
