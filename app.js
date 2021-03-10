@@ -58,20 +58,6 @@ app.get("/api", (req, res) => {
 	res.redirect("/");
 });
 
-app.get("/users/*", (req, res) => {
-	let id = req.url.split('users/')[1].split('/')[0];
-	if (users[id]) {
-		let userFile = fs.readFileSync('./views/user.html', "utf8");
-		res.send(userFile.split('INSERT_ID').join(`${id}`));
-	} else {
-		res.send('user does not exist')
-	}
-});
-
-app.get("/guilds/*", (req, res) => {
-	res.sendFile(__dirname + "/views/guild.html");
-});
-
 app.get("/api/users/*/quotes", (req, res) => {
 	let userID = req.url.split("users/")[1].split("/quotes")[0]; // the worst possible way to do this
 	let data = {
